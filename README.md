@@ -1,0 +1,34 @@
+Hotkey Toolips 
+A lightweight desktop application built with C++, Dear ImGui, and the Windows API, designed for managing global hotkeys, quick app launching, and casually trolling friends during screen shares (like popping up random images or borderless videos).
+
+⚠️ Developer's Note:
+Let's be honest, ~30% of this code was generated with AI because writing boilerplate GUI code from scratch is for people with too much free time. Yes, some parts are aggressively hardcoded for my own convenience. Will I ever refactor it and make it perfectly clean? Maybe someday.
+
+Features
+Global Keybinds: Map keys to specific actions and trigger them globally using low-level Windows API checks (GetAsyncKeyState).
+
+Media & App Launcher: Instantly open URLs, launch .exe files, or render images and videos in borderless fullscreen (using GDI+ and MCI).
+
+System Tray Integration: Hides neatly in the Windows background to keep your taskbar clean.
+
+Dynamic File Scanning: Drop files into the local zalejnost folder and hit update — the tool automatically parses new media without restarting.
+
+Tech Stack
+Language: C++17
+
+GUI: Dear ImGui (GLFW + OpenGL2 backend)
+
+OS Interfacing: Windows (WinAPI, GDI+, ShellAPI, winmm)
+
+Build System: CMake
+
+How to Build
+Clone the repository and build using CMake:
+
+Bash
+git clone https://github.com/osFERPHY/Hotkey_Tolips.git
+cd Hotkey_Tolips
+mkdir build
+cd build
+cmake ..
+cmake --build . --config Release
