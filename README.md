@@ -1,34 +1,40 @@
-Hotkey Toolips 
-A lightweight desktop application built with C++, Dear ImGui, and the Windows API, designed for managing global hotkeys, quick app launching, and casually trolling friends during screen shares (like popping up random images or borderless videos).
+# ⌨️ Hotkey Toolips
 
-⚠️ Developer's Note:
-Let's be honest, ~30% of this code was generated with AI because writing boilerplate GUI code from scratch is for people with too much free time. Yes, some parts are aggressively hardcoded for my own convenience. Will I ever refactor it and make it perfectly clean? Maybe someday.
+A lightweight desktop application built with **C++**, **Dear ImGui**, and the **Windows API**, designed for managing global hotkeys, quick app launching, and casually trolling friends during screen shares (like popping up random images or borderless videos).
 
-Features
-Global Keybinds: Map keys to specific actions and trigger them globally using low-level Windows API checks (GetAsyncKeyState).
+> ⚠️ **Developer's Note:** Let's be honest, ~30% of this code was generated with AI because writing boilerplate GUI code from scratch is for people with too much free time. Yes, some parts are aggressively hardcoded for my own convenience. Will I ever refactor it and make it perfectly clean? Maybe someday.
 
-Media & App Launcher: Instantly open URLs, launch .exe files, or render images and videos in borderless fullscreen (using GDI+ and MCI).
+## 🚀 Features
 
-System Tray Integration: Hides neatly in the Windows background to keep your taskbar clean.
+* **Global Keybinds:** Map keys to specific actions and trigger them globally using low-level Windows API checks (`GetAsyncKeyState`).
+* **Media & App Launcher:** Instantly open URLs, launch `.exe` files, or render images and videos.
+* **Borderless Fullscreen (Troll Mode):** Render images (via GDI+) and videos (via MCI) borderless and fullscreen over all other windows. Perfect for jumpscares, memes, or quick references.
+* **Drag & Drop Integration:** Drop files directly into the window — the tool automatically parses and copies them to the local directory.
+* **Dynamic File Scanning:** Drop files into the local `zalejnost/` folder and hit `update` — the tool automatically parses new media without restarting.
+* **System Tray Integration:** Hides neatly in the Windows background tray to keep your taskbar clean. Right-click to open or exit.
+* **Auto-Start Support:** Can be configured to automatically launch minimized with Windows.
 
-Dynamic File Scanning: Drop files into the local zalejnost folder and hit update — the tool automatically parses new media without restarting.
+## 🛠 Tech Stack
 
-Tech Stack
-Language: C++17
+* **Language:** C++17
+* **GUI:** Dear ImGui (GLFW + OpenGL2 backend)
+* **OS Interfacing:** Windows API (WinAPI, GDI+, ShellAPI, winmm)
+* **Build System:** CMake
+* **Data Storage:** Lightweight local `.txt` files for lists and configurations.
 
-GUI: Dear ImGui (GLFW + OpenGL2 backend)
+## ⚙️ How to Build
 
-OS Interfacing: Windows (WinAPI, GDI+, ShellAPI, winmm)
+Clone the repository and build it using CMake:
 
-Build System: CMake
-
-How to Build
-Clone the repository and build using CMake:
-
-Bash
-git clone https://github.com/osFERPHY/Hotkey_Tolips.git
+```bash
+git clone [https://github.com/osFERPHY/Hotkey_Tolips.git](https://github.com/osFERPHY/Hotkey_Tolips.git)
 cd Hotkey_Tolips
 mkdir build
 cd build
 cmake ..
 cmake --build . --config Release
+```
+
+## 📂 Storage Structure
+
+The application automatically creates a `zalejnost/` directory next to the executable. Any media or programs dropped into the app are stored here, making the tool entirely portable and easy to back up.
