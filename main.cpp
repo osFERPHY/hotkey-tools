@@ -2,7 +2,7 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl2.h"
 
-// бібліотеки hpp
+
 #include "settigs.hpp"
 #include "hotkeys.hpp"
 #include "actions.hpp"
@@ -19,7 +19,7 @@
 #pragma comment(lib, "legacy_stdio_definitions")
 #endif
 
-// НОВІ ІНКЛУДИ ДЛЯ ТРЕЮ
+
 #define GLFW_EXPOSE_NATIVE_WIN32
 #include <GLFW/glfw3native.h>
 #include <shellapi.h>
@@ -28,16 +28,16 @@
 NOTIFYICONDATA nid = {};
 WNDPROC OriginalWndProc;
 
-// Ця функція ловить клік по іконці в треї і розгортає вікно
+
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     if (uMsg == WM_TRAYICON) {
         GLFWwindow* window = (GLFWwindow*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
 
-        if (LOWORD(lParam) == WM_LBUTTONUP) { // Клік лівою кнопкою — розгортаємо вікно
+        if (LOWORD(lParam) == WM_LBUTTONUP) {
             glfwShowWindow(window);
             glfwRestoreWindow(window);
         }
-        else if (LOWORD(lParam) == WM_RBUTTONUP) { // Клік правою кнопкою — показуємо меню
+        else if (LOWORD(lParam) == WM_RBUTTONUP) { 
             POINT pt;
             GetCursorPos(&pt);
 
