@@ -2,10 +2,10 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <windows.h> // Для GetAsyncKeyState
+#include <windows.h> 
 #include <imgui.h>
 #include <GLFW/glfw3.h>
-#include "actions.hpp" // Підключаємо дії
+#include "actions.hpp" 
 #include <algorithm>
 
 
@@ -40,37 +40,36 @@ inline void DrawAddableList(const char* label, char* buffer, size_t buf_size, st
 
 
         // ==================== КОЛІР КНОПКИ "Додати" ====================
-        ImGui::PushStyleColor(ImGuiCol_Button,        settigs::HexToColor(0x2E8B57)); // Основний колір (Зелений)
+        ImGui::PushStyleColor(ImGuiCol_Button,        settigs::HexToColor(0x2E8B57)); // Основний колір
         ImGui::PushStyleColor(ImGuiCol_ButtonHovered, settigs::HexToColor(0x3CB371)); // При наведенні
         ImGui::PushStyleColor(ImGuiCol_ButtonActive,  settigs::HexToColor(0x1E5637)); // При натисканні
 
         if (ImGui::Button(u8"Додати")) {
             std::string text = buffer;
 
-            // 1. Видаляємо приховані символи переносу \r та \n від Ctrl+V
+            //  Видаляємо приховані символи переносу
             text.erase(std::remove(text.begin(), text.end(), '\r'), text.end());
             text.erase(std::remove(text.begin(), text.end(), '\n'), text.end());
 
-            // 2. Обрізаємо пробіли з початку та кінця рядка
             size_t first = text.find_first_not_of(" \t");
             if (first != std::string::npos) {
                 size_t last = text.find_last_not_of(" \t");
                 text = text.substr(first, (last - first + 1));
 
-                // 3. Додаємо очищений текст посилання
+                // Додаємо очищений текст посилання
                 vec.push_back(text);
                 actions::SaveListToFile(filename, vec);
                 actions::RebuildActionsList();
-                buffer[0] = '\0'; // Очищаємо поле вводу
+                buffer[0] = '\0';
             }
         }
 
 
 
 
-        ImGui::PopStyleColor(3); // Повертаємо 3 кольори назад!
+        ImGui::PopStyleColor(3); 
 
-        // Компактний блок зі скролом (висота 90px)
+
         if (!vec.empty()) {
             ImGui::BeginChild("##scroll_area", ImVec2(0, 90), true);
             for (size_t i = 0; i < vec.size(); i++) {
@@ -85,21 +84,21 @@ inline void DrawAddableList(const char* label, char* buffer, size_t buf_size, st
                     actions::RebuildActionsList();
                     ImGui::PopStyleColor(2);
                     ImGui::PopID();
-                    break; // Перериваємо цикл після видалення елемента
+                    break;
                 }
                 ImGui::PopStyleColor(2);
 
                 ImGui::SameLine();
 
-                // Перевіряємо, чи це посилання
+      
                 bool isLink = (vec[i].rfind("http://", 0) == 0 || vec[i].rfind("https://", 0) == 0);
 
-                // Якщо посилання — виводимо повністю, якщо файл — витягуємо лише його назву
+   
                 std::string displayName = isLink ? vec[i] : actions::GetFileName(vec[i]);
 
                 ImGui::TextUnformatted(displayName.c_str());
 
-                // Якщо навести мишкою — покажеться ПОВНИЙ шлях
+
                 if (ImGui::IsItemHovered()) {
                     ImGui::SetTooltip("%s", vec[i].c_str());
                 }
@@ -121,7 +120,7 @@ inline void DrawAddableList(const char* label, char* buffer, size_t buf_size, st
 
     inline bool auto_start = true;
 
-    // Функція для додавання/видалення з автозавантаження Windows
+    // Функція для додавання/видалення з автозавантаження windows
     inline void SetAutoStart(bool enable) {
         HKEY hKey;
         const char* path = "Software\\Microsoft\\Windows\\CurrentVersion\\Run";
@@ -177,13 +176,13 @@ inline void DrawAddableList(const char* label, char* buffer, size_t buf_size, st
     }
 
 
-    // Повністю розширена конвертація GLFW кодів у системні Windows Virtual Keys (VK_*)
+
     inline int GlfwKeyToVK(int glfwKey) {
-        // Стандартні літери та цифри
+
         if (glfwKey >= 'A' && glfwKey <= 'Z') return glfwKey;
         if (glfwKey >= '0' && glfwKey <= '9') return glfwKey;
 
-        // Функціональні клавіші F1 - F12
+
         if (glfwKey >= GLFW_KEY_F1 && glfwKey <= GLFW_KEY_F12) {
             return VK_F1 + (glfwKey - GLFW_KEY_F1);
         }
