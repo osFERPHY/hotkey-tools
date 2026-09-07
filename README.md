@@ -53,7 +53,7 @@ it turned into a general-purpose hotkey launcher.
 
 ## 📦 Installation (prebuilt binary)
 
-1. Download `HotkeyTools.zip` from the [**Releases**](../../releases/latest) page.
+1. Download `HotkeyTools.exe` from the [**Releases**](../../releases/latest) page.
 2. Extract it to any folder.
 3. Run `HotkeyTools.exe`.
 
