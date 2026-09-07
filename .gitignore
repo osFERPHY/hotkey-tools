@@ -11,7 +11,7 @@ cmake_install.cmake
 .vs/
 *.user
 
-# ---- Binaries & objects ----
+# ---- Binaries ----
 *.exe
 *.dll
 *.obj
