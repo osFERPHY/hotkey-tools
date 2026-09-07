@@ -97,19 +97,10 @@ The executable is written to `build/Release/HotkeyTools.exe`.
 
 ### Dependencies
 
-<!-- TODO: replace this block with whichever option is actually true for your project -->
+Dear ImGui and GLFW are vendored in the `imgui/` directory — no package
+manager or extra setup required.
 
-**Option A — vendored (Dear ImGui and GLFW included in the repo):**
-nothing extra to do, the commands above are enough.
-
-**Option B — git submodules:**
-
-```bash
-git clone --recurse-submodules https://github.com/osFERPHY/hotkey-tools.git
-```
-
-**Option C — vcpkg:**
-
+**Toolchain:** MinGW-w64 or MSVC with C++17 support.
 ```bash
 vcpkg install glfw3 imgui[glfw-binding,opengl2-binding]
 cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=<vcpkg>/scripts/buildsystems/vcpkg.cmake
