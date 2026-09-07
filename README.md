@@ -1,4 +1,4 @@
-# ⌨️ Hotkey Toolips
+# ⌨️ Hotkey Tooltips
 
 A lightweight desktop application built with **C++**, **Dear ImGui**, and the **Windows API**, designed for managing global hotkeys, quick app launching, and casually trolling friends during screen shares (like popping up random images or borderless videos).
 
