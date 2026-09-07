@@ -27,7 +27,7 @@ A lightweight desktop application built with **C++**, **Dear ImGui**, and the **
 Clone the repository and build it using CMake:
 
 ```bash
-git clone https://github.com/osFERPHY/Hotkey_Tolips.git
+git clone https://github.com/osFERPHY/hotkey-tools.git
 cd Hotkey_Tolips
 mkdir build
 cd build
