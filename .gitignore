@@ -1,0 +1,29 @@
+﻿# ---- Build ----
+build/
+cmake-build-*/
+out/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# ---- IDE ----
+.idea/
+.vs/
+*.user
+
+# ---- Binaries & objects ----
+*.exe
+*.dll
+*.obj
+*.o
+*.pdb
+*.ilk
+*.lib
+*.exp
+
+# ---- Local runtime data ----
+settings.txt
+config/
+media/
+zalejnost/
+*.log
