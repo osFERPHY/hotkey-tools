@@ -368,7 +368,7 @@ int main(int argc, char* argv[])
                 ImGui::PopStyleColor(3);
                 ImGui::PopStyleVar();
 
-                ImGui::Text("window cout: %d", settigs::cout_keybind);
+                ImGui::Text("window count: %d", settigs::cout_keybind);
                 ImGui::Separator();
 
                 // Динамічний вивід біндів
